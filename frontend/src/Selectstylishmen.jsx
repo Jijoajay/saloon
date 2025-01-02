@@ -786,7 +786,7 @@ const Selectstylishmen = () => {
                 </Col>
               </div> */}
 
-              <Col className=" col-12 col-md-8 col-lg-6 searchbar">
+              <Col className=" col-12 col-md-8 col-lg-6 ">
                 <div>
                   <div
                     className="col-11"

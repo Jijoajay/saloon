@@ -28,8 +28,9 @@ const saloonformenimagaesSchemea = new mongoose.Schema({
     LOCATION: String,
     RATINGS: String,
     HOURS: String,
-   
-
+    latitude : String,
+    longitude : String,
+    openingtime:String
   });
 SaloonformenModelImageonly = mongoose.model("saloonformenimages", saloonformenimagaesSchemea);
 module.exports = SaloonformenModelImageonly;

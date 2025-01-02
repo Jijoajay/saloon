@@ -1,4 +1,22 @@
+.menssectionhover {
+  min-width: 768px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  z-index: -1; /* Set a negative z-index to place it beneath other elements */
+  transition: transform 300ms;
+}
 
+.menssectionhover:hover {
+  transform-origin: 50% 50%;
+  transform: scale(1.05);
+}
+
+.buttonhoverandimage{
+  transition: 0s;
+  transform-origin: 50% 50%;
+  transform: scale(1.05);
+}
 
   /* Small devices (≥576px) */
   @media (min-width: 576px) {

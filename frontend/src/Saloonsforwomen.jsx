@@ -19,6 +19,47 @@ import DisplayData from "./DisplayData";
 import { useDispatch, useSelector } from "react-redux";
 import { wholedatacredentials } from "./Reducers/wholedata";
 const Saloonsforwomen = () => {
+  const [currentlocationstate, setcurrentLocationstate] = useState("");
+  const [placenamestate, setplacenamestate] = useState("");
+
+  if ("geolocation" in navigator) {
+    // Geolocation is supported
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // Extract latitude and longitude from the position object
+        console.log("Current position:", position);
+        const { latitude, longitude } = position.coords;
+        setcurrentLocationstate({ latitude: latitude, longitude: longitude });
+        console.log("Current Location:", { latitude, longitude });
+      },
+      (error) => {
+        // Handle error
+        console.error("Error getting current location:", error);
+      }
+    );
+  } else {
+    // Geolocation is not supported
+    console.error("Geolocation is not supported by this browser.");
+  }
+
+  const getPlaceName = async (latitude, longitude) => {
+    const apiUrl = `https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&api_key=6604f48bb31ba040960444oky6154fc`;
+
+    try {
+      const response = await axios.get(apiUrl);
+      setplacenamestate(response.data.display_name);
+    } catch (error) {
+      //   console.error("Error retrieving place name:", error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    console.log("currentlocationstate", currentlocationstate);
+    getPlaceName(currentlocationstate.latitude, currentlocationstate.longitude);
+    console.log(placenamestate);
+  }, [currentlocationstate]);
+
   const dispatch = useDispatch();
   const wholeDataREDUX = useSelector((state) => state.wholedata.value);
 
@@ -143,7 +184,7 @@ const Saloonsforwomen = () => {
 
   return (
     <Container fluid>
-      <div style={{ position: "sticky", top: "0" }}>
+      <div style={{ position: "sticky", top: "0", zIndex: "100" }}>
         <Navbarofthesaloon backgroundcolor="black" color="white" />
       </div>
 

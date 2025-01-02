@@ -18,6 +18,9 @@ import Mobilenumber from "./Test/TESTINGimaGES/bilsy";
 import Reviewssection from "./Reviewssection";
 import Reduxtest from "./Reduxtest";
 import ReduxTestingontherpage from "./ReduxTestingontherpage";
+import Test5 from "./Test5";
+import Test6 from "./Test6";
+import Test7 from "./Test7";
 
 function App() {
   return (
@@ -37,6 +40,10 @@ function App() {
           <Route path="/test" element={<Test />}></Route>
           <Route path="/test2" element={<Test2 />}></Route>
           <Route path="/test3" element={<Test3 />}></Route>
+          <Route path="/test5" element={<Test5 />}></Route>
+          <Route path="/test6" element={<Test6 />}></Route>
+          <Route path="/test7" element={<Test7 />}></Route>
+
           <Route path="/saloonsforwomen" element={<Saloonsforwomen />}></Route>
           <Route path="/serviceforwomen" element={<Serviceforwomen />}></Route>
           <Route

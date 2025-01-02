@@ -53,6 +53,7 @@ const upload = multer({ storage: storage });
       heading:req.body.heading,
       status:req.body.status,
       closingtime:req.body.closingtime,
+      openingtime:req.body.openingtime,
       reviews:req.body.reviews,
       gender:req.body.gender,
       locationdetails:req.body.locationdetails,
@@ -60,6 +61,8 @@ const upload = multer({ storage: storage });
       LOCATION: req.body.LOCATION,
       RATINGS: req.body.RATINGS,
       HOURS: req.body.HOURS,
+      latitude :  req.body.latitude,
+      longitude :  req.body.longitude,
     });
     newsaloon.save()
       .then((res) => {

@@ -15,16 +15,15 @@ const FilterSaloonMen = (props) => {
   const [onclickontoggleRatings, setonclickontoggleRatings] = useState(false);
   const [onclickontoggleHours, setonclickontoggleHours] = useState(false);
 
-  // const [wholestate, setwholestate] = useState({
-  //   GENDER: "MALE",
-  //   LOCATION: "NAGERCOIL",
-  //   RATINGS: "FIVE",
-  //   HOURS: "ANYTIME",
-  // });
-  const [gender, setGender] = useState("MALE");
-  const [location, setLocation] = useState("NAGERCOIL");
-  const [ratingsvalue, setRatingsvalue] = useState("FIVE");
-  const [hours, setHours] = useState("ANYTIME");
+  // const [gender, setGender] = useState("MALE");
+  // const [location, setLocation] = useState("NAGERCOIL");
+  // const [ratingsvalue, setRatingsvalue] = useState("FIVE");
+  // const [hours, setHours] = useState("ANYTIME");
+
+  const [gender, setGender] = useState(null);
+  const [location, setLocation] = useState(null);
+  const [ratingsvalue, setRatingsvalue] = useState(null);
+  const [hours, setHours] = useState(null);
 
   useEffect(() => {
     console.log("CUREENT RATING VALue", ratingsvalue);
@@ -42,63 +41,62 @@ const FilterSaloonMen = (props) => {
     setHours(hours);
   };
 
-  const handlemensFilter = () => {
-    setwholestate((prevState) => ({
-      ...prevState,
-      GENDER: "MALE",
-    }));
+  // const handlemensFilter = () => {
+  //   setwholestate((prevState) => ({
+  //     ...prevState,
+  //     GENDER: "MALE",
+  //   }));
 
-    const cringe = props.data.filter(
-      (item) =>
-        item.GENDER === wholestate.GENDER &&
-        item.LOCATION === wholestate.LOCATION &&
-        item.RATINGS === wholestate.RATINGS &&
-        item.HOURS === wholestate.HOURS
-    );
+  //   const cringe = props.data.filter(
+  //     (item) =>
+  //       item.GENDER === wholestate.GENDER &&
+  //       item.LOCATION === wholestate.LOCATION &&
+  //       item.RATINGS === wholestate.RATINGS &&
+  //       item.HOURS === wholestate.HOURS
+  //   );
 
-    // console.log(cringe, "cringe");
-    props.setfilteredDatapro(cringe);
-    console.log("crisnge", props.filteredDatapro, "cringe");
-    console.log("bastard", props.filteredDatapro, "filtersdata");
-  };
-  const handleGirlsFilter = () => {
-    setwholestate((prevState) => ({
-      ...prevState,
-      GENDER: "FEMALE",
-    }));
+  //   // console.log(cringe, "cringe");
+  //   props.setfilteredDatapro(cringe);
+  //   console.log("crisnge", props.filteredDatapro, "cringe");
+  //   console.log("bastard", props.filteredDatapro, "filtersdata");
+  // };
+  // const handleGirlsFilter = () => {
+  //   setwholestate((prevState) => ({
+  //     ...prevState,
+  //     GENDER: "FEMALE",
+  //   }));
 
-    const cringe = props.data.filter(
-      (item) =>
-        item.GENDER === wholestate.GENDER &&
-        item.LOCATION === wholestate.LOCATION &&
-        item.RATINGS === wholestate.RATINGS &&
-        item.HOURS === wholestate.HOURS
-    );
-    // console.log(cringe, "cringe");
-    props.setfilteredDatapro(cringe);
-    console.log("cringe", props.filteredDatapro, "cringe");
-    console.log("bastard", props.filteredDatapro, "filtersdata");
-  };
-  const handleUNISEXFILTER = () => {
-    setwholestate((prevState) => ({
-      ...prevState,
-      GENDER: "UNISEX",
-    }));
+  //   const cringe = props.data.filter(
+  //     (item) =>
+  //       item.GENDER === wholestate.GENDER &&
+  //       item.LOCATION === wholestate.LOCATION &&
+  //       item.RATINGS === wholestate.RATINGS &&
+  //       item.HOURS === wholestate.HOURS
+  //   );
+  //   props.setfilteredDatapro(cringe);
+  //   console.log("cringe", props.filteredDatapro, "cringe");
+  //   console.log("bastard", props.filteredDatapro, "filtersdata");
+  // };
+  // const handleUNISEXFILTER = () => {
+  //   setwholestate((prevState) => ({
+  //     ...prevState,
+  //     GENDER: "UNISEX",
+  //   }));
 
-    const cringe = props.data.filter(
-      (item) =>
-        item.GENDER === wholestate.GENDER &&
-        item.LOCATION === wholestate.LOCATION &&
-        item.RATINGS === wholestate.RATINGS &&
-        item.HOURS === wholestate.HOURS
-    );
-    // console.log(cringe, "cringe");
+  //   const cringe = props.data.filter(
+  //     (item) =>
+  //       item.GENDER === wholestate.GENDER &&
+  //       item.LOCATION === wholestate.LOCATION &&
+  //       item.RATINGS === wholestate.RATINGS &&
+  //       item.HOURS === wholestate.HOURS
+  //   );
+  //   // console.log(cringe, "cringe");
 
-    props.setfilteredDatapro(cringe);
-    console.log("cringe", props.filteredDatapro, "cringe");
+  //   props.setfilteredDatapro(cringe);
+  //   console.log("cringe", props.filteredDatapro, "cringe");
 
-    console.log("bastard", props.filteredDatapro, "filtersdata");
-  };
+  //   console.log("bastard", props.filteredDatapro, "filtersdata");
+  // };
 
   const setgendertoggle = () => {
     // console.log("data", props.data, 'data,"datadasdsdf');
@@ -115,23 +113,65 @@ const FilterSaloonMen = (props) => {
     setonclickontoggleHours(!onclickontoggleHours);
   };
 
-  // useEffect(() => {
-  //   const temp = props.data.map((item) => {
-  //     (item.GENDER = wholestate.GENDER),
-  //       (item.LOCATION = wholestate.LOCATION),
-  //       (item.RATINGS = wholestate.RATINGS),
-  //       (item.HOURS = wholestate.HOURS);
-  //   });
-  //   props.setfilteredDatapro(temp);
-  // }, []);
   useEffect(() => {
-    const filteredData = props.data.filter(
-      (item) =>
-        item.GENDER === gender &&
-        item.LOCATION === location &&
-        item.RATINGS === ratingsvalue &&
-        item.HOURS === hours
-    );
+    let filteredData;
+
+    if (gender === null) {
+      filteredData = props.data.filter(
+        (item) =>
+          // item.GENDER === gender &&
+          (item.LOCATION === location || location === null) &&
+          (item.RATINGS === ratingsvalue || ratingsvalue === null) &&
+          (item.HOURS === hours || hours === null)
+      );
+    }
+
+    if (location === null) {
+      filteredData = props.data.filter(
+        (item) =>
+          (item.GENDER === gender || gender === null) &&
+          // item.LOCATION === location &&
+          (item.RATINGS === ratingsvalue || ratingsvalue === null) &&
+          (item.HOURS === hours || hours === null)
+      );
+    }
+
+    if (ratingsvalue === null) {
+      filteredData = props.data.filter(
+        (item) =>
+          (item.GENDER === gender || gender === null) &&
+          (item.LOCATION === location || location === null) &&
+          // item.RATINGS === ratingsvalue &&
+          (item.HOURS === hours || hours === null)
+      );
+    }
+    if (hours === null) {
+      // alert(" NOT else");
+
+      filteredData = props.data.filter(
+        (item) =>
+          (item.GENDER === gender || gender === null) &&
+          (item.LOCATION === location || location === null) &&
+          (item.RATINGS === ratingsvalue || ratingsvalue === null)
+      );
+    }
+
+    if (
+      gender === null &&
+      location === null &&
+      ratingsvalue === null &&
+      hours === null
+    ) {
+      filteredData = props.data.filter(
+        (item) =>
+          item.GENDER === gender &&
+          item.LOCATION === location &&
+          item.RATINGS === ratingsvalue &&
+          item.HOURS === hours
+      );
+    }
+
+    console.log("FILTER DATA TO BE SET", filteredData);
     props.setfilteredDatapro(filteredData);
     console.log("filterdatatestbor >>> \n", props.filteredDatapro, " \n >>> ");
     console.log("props.data >>> \n", props.data, " \n >>> ");
@@ -232,6 +272,8 @@ const FilterSaloonMen = (props) => {
                       name="group1"
                       type={type}
                       onClick={() => handleFilterGENDER("MALE")}
+                      className="custom-radio"
+                      style={{ color: "black" }}
                       id={`inline-${type}-1`}
                     />
                     <Form.Label>Mens</Form.Label>
@@ -246,6 +288,7 @@ const FilterSaloonMen = (props) => {
                       name="group1"
                       onClick={() => handleFilterGENDER("FEMALE")}
                       type={type}
+                      className="custom-radio"
                       id={`inline-${type}-1`}
                     />
                     <Form.Label>Girls</Form.Label>
@@ -259,6 +302,7 @@ const FilterSaloonMen = (props) => {
                       inline
                       name="group1"
                       type={type}
+                      className="custom-radio"
                       onClick={() => handleFilterGENDER("UNISEX")}
                       id={`inline-${type}-1`}
                     />
@@ -317,6 +361,7 @@ const FilterSaloonMen = (props) => {
                       inline
                       name="group1"
                       type={type}
+                      className="custom-radio"
                       onClick={() => handleFilterlocation("NAGERCOIL")}
                       id={`inline-${type}-1`}
                     />
@@ -331,6 +376,7 @@ const FilterSaloonMen = (props) => {
                       inline
                       name="group1"
                       type={type}
+                      className="custom-radio"
                       onClick={() => handleFilterlocation("MARTHANDAM")}
                       id={`inline-${type}-1`}
                     />
@@ -345,6 +391,7 @@ const FilterSaloonMen = (props) => {
                       inline
                       name="group1"
                       type={type}
+                      className="custom-radio"
                       onClick={() => handleFilterlocation("KALIYAKKAVILAI")}
                       id={`inline-${type}-1`}
                     />
@@ -406,6 +453,7 @@ const FilterSaloonMen = (props) => {
                       type={type}
                       id={`inline-${type}-1`}
                       style={{ paddingTop: "5px" }}
+                      className="custom-radio"
                       onClick={() => handleFilterratingsvalue("FIVE")}
                     />
                     {/* <Form.Label>Nagercoil</Form.Label> */}
@@ -435,6 +483,7 @@ const FilterSaloonMen = (props) => {
                       name="group1"
                       type={type}
                       onClick={() => handleFilterratingsvalue("FOUR")}
+                      className="custom-radio"
                       id={`inline-${type}-1`}
                       style={{ paddingTop: "5px" }}
                     />
@@ -465,6 +514,7 @@ const FilterSaloonMen = (props) => {
                       name="group1"
                       type={type}
                       onClick={() => handleFilterratingsvalue("THREE")}
+                      className="custom-radio"
                       id={`inline-${type}-1`}
                       style={{ paddingTop: "5px" }}
                     />
@@ -495,6 +545,7 @@ const FilterSaloonMen = (props) => {
                       name="group1"
                       type={type}
                       onClick={() => handleFilterratingsvalue("TWO")}
+                      className="custom-radio"
                       id={`inline-${type}-1`}
                       style={{ paddingTop: "5px" }}
                     />
@@ -526,6 +577,7 @@ const FilterSaloonMen = (props) => {
                       type={type}
                       id={`inline-${type}-1`}
                       onClick={() => handleFilterratingsvalue("ONE")}
+                      className="custom-radio"
                       style={{ paddingTop: "5px" }}
                     />
                     {/* <Form.Label>Nagercoil</Form.Label> */}
@@ -608,6 +660,7 @@ const FilterSaloonMen = (props) => {
                       type={type}
                       id={`inline-${type}-1`}
                       onClick={() => handleFilterhours("ANYTIME")}
+                      className="custom-radio"
                     />
                     <Form.Label>Anytime</Form.Label>
                   </InputGroup>
@@ -619,6 +672,7 @@ const FilterSaloonMen = (props) => {
                   <InputGroup style={{ paddingLeft: "20px" }}>
                     <Form.Check
                       onClick={() => handleFilterhours("OPENNOW")}
+                      className="custom-radio"
                       inline
                       name="group1"
                       type={type}
@@ -635,6 +689,7 @@ const FilterSaloonMen = (props) => {
                       inline
                       name="group1"
                       onClick={() => handleFilterhours("OPEN24HOURS")}
+                      className="custom-radio"
                       type={type}
                       id={`inline-${type}-1`}
                     />
@@ -651,6 +706,7 @@ const FilterSaloonMen = (props) => {
                       type={type}
                       id={`inline-${type}-1`}
                       onClick={() => handleFilterhours("SUNDAY")}
+                      className="custom-radio"
                     />
                     <Form.Label>Sunday</Form.Label>
                   </InputGroup>
@@ -665,6 +721,7 @@ const FilterSaloonMen = (props) => {
                       type={type}
                       id={`inline-${type}-1`}
                       onClick={() => handleFilterhours("MONDAY")}
+                      className="custom-radio"
                     />
                     <Form.Label>Monday</Form.Label>
                   </InputGroup>
@@ -678,6 +735,7 @@ const FilterSaloonMen = (props) => {
                         type={type}
                         id={`inline-${type}-1`}
                         onClick={() => handleFilterhours("TUESDAY")}
+                        className="custom-radio"
                       />
                       <Form.Label>Tuesday</Form.Label>
                     </InputGroup>
@@ -691,6 +749,7 @@ const FilterSaloonMen = (props) => {
                           type={type}
                           id={`inline-${type}-1`}
                           onClick={() => handleFilterhours("WEDNESDAY")}
+                          className="custom-radio"
                         />
                         <Form.Label>Wednesday</Form.Label>
                       </InputGroup>
@@ -705,6 +764,7 @@ const FilterSaloonMen = (props) => {
                           type={type}
                           id={`inline-${type}-1`}
                           onClick={() => handleFilterhours("THURSDAY")}
+                          className="custom-radio"
                         />
                         <Form.Label>Thursday</Form.Label>
                       </InputGroup>
@@ -717,6 +777,7 @@ const FilterSaloonMen = (props) => {
                             name="group1"
                             type={type}
                             onClick={() => handleFilterhours("FRIDAY")}
+                            className="custom-radio"
                             id={`inline-${type}-1`}
                           />
                           <Form.Label>Friday</Form.Label>
@@ -731,6 +792,7 @@ const FilterSaloonMen = (props) => {
                             name="group1"
                             type={type}
                             onClick={() => handleFilterhours("SATURDAY")}
+                            className="custom-radio"
                             id={`inline-${type}-1`}
                           />
                           <Form.Label>Saturday</Form.Label>

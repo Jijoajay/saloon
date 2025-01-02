@@ -17,16 +17,14 @@ const storage = multer.diskStorage({
   });
 const upload = multer({ storage: storage });
 
+
+
+
 router.post("/images", upload.fields([
     { name: 'logo', maxCount: 1 }
-    
   ]), (req, res) => {
- 
-    const logoFile = req.files['logo'][0];
-    
-
-    const newserimganddatas =  Servicesformenimages({
-      
+  const logoFile = req.files['logo'][0];
+    const newserimganddatas =  Servicesformenimages({   
     logo: {
         data: fs.readFileSync("uploads/" + logoFile.filename),
         contentType: "image/png",
@@ -43,8 +41,6 @@ router.post("/images", upload.fields([
       );
       newserimganddatas.save()
       .then((res) => {
-        // console.log("RES",res)
-        // console.log("image is saved");
       })
       .catch((err) => {
         console.log(err, "error has occur");

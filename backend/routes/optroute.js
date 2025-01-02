@@ -32,14 +32,19 @@ router.post('/generateotp', async (req, res) => {
     // sendSMS(); 
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
+        // auth: {
+        //   user: 'rolesonjg96@gmail.com' ,
+        //   pass: 'kygk bnod qwrf ppzi '
+        // }
+
         auth: {
-          user: 'rolesonjg96@gmail.com',
-          pass: 'kygk bnod qwrf ppzi '
-        }
+            user: process.env.MAIL_USER ,
+            pass: process.env.NODEMAILER_KEY 
+          }
       });
         
         const mailOptions = {
-            from: 'rolesonjg96@gmail.com', 
+            from: process.env.MAIL_USER, 
             to: email, 
             subject: 'OTP from salon app', 
             text: otp 

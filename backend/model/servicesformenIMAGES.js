@@ -13,6 +13,7 @@ timeunit:String,
 amount:Number,
 currency:String,
 saloonnameID:String,
+
 });
 Servicesformenimages = mongoose.model("servicesformenimages", servicesformenIMAGESSChema);
 module.exports = Servicesformenimages;

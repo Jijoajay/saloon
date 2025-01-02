@@ -1,25 +1,35 @@
-// import React from "react";
+// import React, { useState } from "react";
 // import { Row, Col, Container, Button } from "react-bootstrap";
 // import barbermen from "./assets/barbermen.png";
 // import barbergirl from "./assets/barbergirl.png";
 // import Navbarofthesaloon from "./ui-components/Navbarofthesaloon";
 // import { useNavigate } from "react-router-dom";
-
+// import "./styles/MensgirlsSection.css";
 // const Mensgirlstwo = () => {
 //   const navigate = useNavigate();
 //   const mensbuttonclick = () => {
 //     navigate("/saloonsformen");
 //   };
+//   const girlsbuttonclick = () => {
+//     navigate("/saloonsforwomen");
+//   };
+//   const [mentogglebutton, setmentogglebutton] = useState(false);
+//   const [womentogglebutton, setwomentogglebutton] = useState(false);
+
 //   return (
 //     <Container
 //       style={{
 //         padding: "0px",
 //         margin: "0px",
 //         minWidth: "100%",
+//         height: "auto",
+//         position: "relative",
 //       }}
 //     >
-//       <Navbarofthesaloon backgroundcolor="black" color="white" />
-
+//       <div style={{ position: "relative", zIndex: "1" }}>
+//         <Navbarofthesaloon backgroundcolor="black" color="white" />
+//       </div>
+//       {/* <h1 className="h11">h11</h1> */}
 //       <Row
 //         style={{
 //           padding: "0px",
@@ -29,15 +39,20 @@
 //         }}
 //       >
 //         <Col
+//           className="col-6  "
 //           style={{
 //             maxWidth: "800px",
 //             padding: "0px",
 //             margin: "0px",
-//             position: "relative",
+
+//             // position: "relative",
 //           }}
+//           onMouseOver={() => setmentogglebutton(true)}
+//           onMouseOut={() => setmentogglebutton(false)}
 //         >
 //           <img
-//             style={{ minWidth: "768px", padding: "0px", margin: "0px" }}
+//             className="barbermenimage menssectionhover  "
+//             // style={{ minWidth: "768px", padding: "0px", margin: "0px" }}
 //             src={barbermen}
 //             alt=""
 //           />
@@ -46,25 +61,32 @@
 //             style={{
 //               width: "100%",
 //               height: "75px",
-//               background: "rgba(1, 11, 15, 0.3)",
+//               background: mentogglebutton
+//                 ? "rgba(1, 11, 15, 0.6)"
+//                 : "rgba(1, 11, 15, 0.3)",
+//               transition: "500ms",
 //               color: "White",
 //               fontWeight: "700",
 //               fontSize: "40px",
 //               position: "sticky",
 //               left: "0px",
 //               bottom: "0px",
+//               border: "1px solid black",
 //             }}
 //           >
-//             Mens
+//             Men
 //           </button>
 //         </Col>
 //         <Col
+//           className="col-6"
 //           style={{
 //             maxWidth: "800px",
 //             padding: "0px",
 //             margin: "0px",
 //             position: "relative",
 //           }}
+//           onMouseOver={() => setwomentogglebutton(true)}
+//           onMouseOut={() => setwomentogglebutton(false)}
 //         >
 //           <img
 //             style={{
@@ -72,6 +94,7 @@
 //               padding: "0px",
 //               margin: "0px",
 //             }}
+//             className=" menssectionhover"
 //             src={barbergirl}
 //             alt=""
 //           />
@@ -79,16 +102,22 @@
 //             style={{
 //               width: "100%",
 //               height: "75px",
-//               background: "rgba(1, 11, 15, 0.3)",
+//               background: womentogglebutton
+//                 ? "rgba(1, 11, 15, 0.6)"
+//                 : "rgba(1, 11, 15, 0.3)",
+//               transition: "500ms",
 //               color: "White",
 //               fontWeight: "700",
 //               fontSize: "40px",
 //               position: "sticky",
 //               right: "0px",
 //               bottom: "0px",
+//               border: "1px solid black",
 //             }}
+//             className={womentogglebutton ? "buttonhoverandimage" : ""}
+//             onClick={girlsbuttonclick}
 //           >
-//             Girls
+//             Women
 //           </button>
 //         </Col>
 //       </Row>
@@ -98,15 +127,15 @@
 
 // export default Mensgirlstwo;
 
-//2.0
-
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import barbermen from "./assets/barbermen.png";
 import barbergirl from "./assets/barbergirl.png";
 import Navbarofthesaloon from "./ui-components/Navbarofthesaloon";
 import { useNavigate } from "react-router-dom";
 import "./styles/MensgirlsSection.css";
+import Footer from "./ui-components/Footer";
+
 const Mensgirlstwo = () => {
   const navigate = useNavigate();
   const mensbuttonclick = () => {
@@ -115,17 +144,38 @@ const Mensgirlstwo = () => {
   const girlsbuttonclick = () => {
     navigate("/saloonsforwomen");
   };
+  const [mentogglebutton, setmentogglebutton] = useState(false);
+  const [womentogglebutton, setwomentogglebutton] = useState(false);
 
+  const menImageRef = useRef(null);
+  const womenImageRef = useRef(null);
+  const menButtonRef = useRef(null);
+  const womenButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (menImageRef.current && womenImageRef.current) {
+      const menImageHeight = menImageRef.current.offsetHeight;
+      const womenImageHeight = womenImageRef.current.offsetHeight;
+      const maxHeight = Math.max(menImageHeight, womenImageHeight);
+      menButtonRef.current.style.height = `${maxHeight}px`;
+      womenButtonRef.current.style.height = `${maxHeight}px`;
+    }
+  }, []);
   return (
     <Container
       style={{
         padding: "0px",
         margin: "0px",
         minWidth: "100%",
+        height: "100vh",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <Navbarofthesaloon backgroundcolor="black" color="white" />
-
+      <div style={{ position: "relative", zIndex: "1" }}>
+        <Navbarofthesaloon backgroundcolor="black" color="white" />
+      </div>
+      {/* <h1 className="h11">h11</h1> */}
       <Row
         style={{
           padding: "0px",
@@ -135,38 +185,46 @@ const Mensgirlstwo = () => {
         }}
       >
         <Col
-          className="col-6 "
+          onClick={mensbuttonclick}
+          className="col-6  "
           style={{
             maxWidth: "800px",
             padding: "0px",
             margin: "0px",
-            position: "relative",
+
+            // position: "relative",
           }}
+          onMouseOver={() => setmentogglebutton(true)}
+          onMouseOut={() => setmentogglebutton(false)}
         >
           <img
-            className="barbermenimage"
-            style={{ minWidth: "768px", padding: "0px", margin: "0px" }}
+            className="barbermenimage menssectionhover  "
+            // style={{ minWidth: "768px", padding: "0px", margin: "0px" }}
             src={barbermen}
             alt=""
           />
           <button
-            onClick={mensbuttonclick}
             style={{
               width: "100%",
               height: "75px",
-              background: "rgba(1, 11, 15, 0.3)",
+              background: mentogglebutton
+                ? "rgba(1, 11, 15, 0.6)"
+                : "rgba(1, 11, 15, 0.3)",
+              transition: "500ms",
               color: "White",
               fontWeight: "700",
               fontSize: "40px",
               position: "sticky",
               left: "0px",
               bottom: "0px",
+              border: "1px solid black",
             }}
           >
-            Mens
+            Men
           </button>
         </Col>
         <Col
+          onClick={girlsbuttonclick}
           className="col-6"
           style={{
             maxWidth: "800px",
@@ -174,6 +232,8 @@ const Mensgirlstwo = () => {
             margin: "0px",
             position: "relative",
           }}
+          onMouseOver={() => setwomentogglebutton(true)}
+          onMouseOut={() => setwomentogglebutton(false)}
         >
           <img
             style={{
@@ -181,6 +241,7 @@ const Mensgirlstwo = () => {
               padding: "0px",
               margin: "0px",
             }}
+            className=" menssectionhover"
             src={barbergirl}
             alt=""
           />
@@ -188,17 +249,21 @@ const Mensgirlstwo = () => {
             style={{
               width: "100%",
               height: "75px",
-              background: "rgba(1, 11, 15, 0.3)",
+              background: womentogglebutton
+                ? "rgba(1, 11, 15, 0.6)"
+                : "rgba(1, 11, 15, 0.3)",
+              transition: "500ms",
               color: "White",
               fontWeight: "700",
               fontSize: "40px",
               position: "sticky",
               right: "0px",
               bottom: "0px",
+              border: "1px solid black",
             }}
-            onClick={girlsbuttonclick}
+            className={womentogglebutton ? "buttonhoverandimage" : ""}
           >
-            Girls
+            Women
           </button>
         </Col>
       </Row>

@@ -12,27 +12,43 @@ import saloonbackground from "./assets/saloonbackground.png";
 import Navbarofthesaloon from "./ui-components/Navbarofthesaloon";
 import MensgirlsSection from "./MensgirlsSection";
 import axios from "axios";
+import ReactSearchBox from "react-search-box";
+import Homepagesearchbar from "./ui-components/Homepagesearchbar";
 
-// import Mensgirlstwo from "./Mensgirlstwo";
 const Homepage = () => {
+  // const data2 = ["saloons for men", "saloons for women", "saloons for unisex"];
+  const data2 = [
+    {
+      key: "1",
+      value: "salons for women",
+    },
+    {
+      key: "2",
+      value: "salons for men",
+    },
+    {
+      key: "3",
+      value: "salons for unisex",
+    },
+  ];
+  const [searchValue, setSearchValue] = useState("Doe");
+  const data = [
+    {
+      key: "1",
+      value: "salons for men",
+    },
+    {
+      key: "2",
+      value: "salons for women",
+    },
+    {
+      key: "3",
+      value: "unisex salons",
+    },
+  ];
   let response;
   const [dataimage, setDataImage] = useState([]);
   const [bookappiontments, setbookappiontments] = useState(false);
-
-  // const fetchData = async () => {
-  //   try {
-  //     response = await axios.get("http://127.0.0.1:5000/");
-  //     // console.log("response");
-  //     setDataImage(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchData();
-  //   console.log("dataimage", dataimage);
-  // }, [response]);
 
   const bookappiontmentsfunc = () => {
     setbookappiontments(true);
@@ -72,43 +88,13 @@ const Homepage = () => {
           />
         </div>
 
+        {/* orginal */}
         <Container>
           <Row>
             <Col>
-              {/* <Form className="d-flex" style={{ position: "relative" }}>
-              <Form.Control
-                type="search"
-                className="me-2"
-                // aria-label="Search"
-                style={{
-                  position: "relative",
-                  height: "50px",
-                  width: "480px",
-                  backgroundColor: " rgba(255, 255, 255, 0.1)",
-                  borderRadius: "25px",
-                  marginBottom: "50px",
-                  marginTop: "50px",
-                }}
-              />
-              <Button
-                style={{
-                  background: "white",
-                  color: "black",
-                  border: "1px solid white",
-                  position: "absolute",
-                  top: "50px",
-                  left: "410px",
-                  padding: "12px",
-                  width: "70px",
-                  borderRadius: "25px",
-                  justifyContent: "center",
-                  borderTopLeftRadius: "0px",
-                  borderBottomLeftRadius: "0px",
-                }}
-              >
-                <CiSearch />
-              </Button>
-            </Form> */}
+              <Homepagesearchbar data={data2} />
+
+              {/*             
               <InputGroup
                 style={{
                   height: "50px",
@@ -116,6 +102,7 @@ const Homepage = () => {
                   maxWidth: "480px",
                   backgroundColor: " rgba(255, 255, 255, 0.1)",
                   // borderRadius: "25px",
+
                   marginBottom: "50px",
                   marginTop: "50px",
                   borderTopLeftRadius: "25px",
@@ -130,6 +117,7 @@ const Homepage = () => {
                     backgroundColor: " rgba(255, 255, 255, 0.1)",
                     borderTopLeftRadius: "25px",
                     borderBottomLeftRadius: "25px",
+                    color: "white",
                   }}
                 />
                 <InputGroup.Text
@@ -140,7 +128,67 @@ const Homepage = () => {
                 >
                   <CiSearch />
                 </InputGroup.Text>
-              </InputGroup>
+              </InputGroup> */}
+
+              {/* <div>
+                <div
+                  className="col-6"
+                  style={{
+                    display: "flex",
+                    marginTop: "50px",
+                    borderTopRightRadius: "25px",
+                    borderBottomRightRadius: "25px",
+                    borderTopLeftRadius: "25px",
+                    borderBottomLeftRadius: "25px",
+                    // boxShadow: "0px 4px 6px 4px rgba(0, 0, 0, 0.1) ",
+
+                    position: "relative",
+                  }}
+                >
+                  <div
+                    className="col-10 "
+                    style={{
+                      marginTop: "5px",
+                      paddingLeft: "10px",
+                      paddingBottom: "10px",
+                      boxShadow: "none",
+                    }}
+                  >
+                    <ReactSearchBox
+                      placeholder="Search for salons"
+                      value={searchValue}
+                      data={data}
+                      onChange={(value) => handleSearch(value)}
+                      onSelect={(record) => console.log(record)}
+                      rightIcon={<>🎨</>}
+                      inputFontColor="white"
+                      inputHeight="40px"
+                      inputBorderColor="white"
+                      inputBackgroundColor="rgba(255,255,255, 0)"
+                      className="searchbar"
+                    />
+                  </div>
+
+                  <div
+                    style={{
+                      borderTopRightRadius: "25px",
+                      borderBottomRightRadius: "25px",
+                      color: "black",
+                      background: "white",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      height: "40px",
+                      marginTop: "5px",
+                      position: "absolute",
+                      left: "500px",
+                    }}
+                    className="col-2"
+                  >
+                    <CiSearch />
+                  </div>
+                </div>
+              </div> */}
             </Col>
           </Row>
           <Row>
@@ -172,6 +220,7 @@ const Homepage = () => {
                   padding: "18px",
                   width: "300px",
                   marginTop: "50px",
+                  border: "1px solid black",
                 }}
                 className="buttonofthehoempage"
                 onClick={bookappiontmentsfunc}
